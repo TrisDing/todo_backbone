@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/todo.css"/>
+</head>
+<body>
+
+<div class="container" id="todo-app">
+
+    <header>
+        <h1>Todos</h1>
+        <input id="new-todo" type="text" placeholder="What needs to be done?">
+    </header>
+
+    <section id="main">
+        <ul id="todo-list">
+            <!-- render list items from item-template -->
+        </ul>
+    </section>
+
+    <footer>
+        <!-- render stats from stats-template -->
+    </footer>
+
+</div>
+
+<div id="instructions">
+    Double-click to edit a todo.
+</div>
+
+<div id="credits">
+    Built with <a href="http://backbonejs.org/">Backbone.js</a>
+    and <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>
+</div>
+
+<!-- Scripts -->
+<script type="text/javascript" src="js/lib/jquery.js"></script>
+<script type="text/javascript" src="js/lib/underscore.js"></script>
+<script type="text/javascript" src="js/lib/backbone.js"></script>
+<script type="text/javascript" src="js/todo.js"></script>
+
+<!-- Templates -->
+<script type="text/template" id="item-template">
+    <div class="view">
+        <input class="toggle" type="checkbox" <%= done ? 'checked' : '' %> />
+        <span><%= title %></span>
+        <a class="destroy"><i class="icon-trash"></i></a>
+    </div>
+    <input class="edit" type="text" value="<%= title %>"/>
+</script>
+
+<script type="text/template" id="stats-template">
+    <% if (done) { %>
+    <a class="btn btn-primary" id="clear-completed">Clear <%= done %> completed <%= done == 1 ? 'item' : 'items' %></a>
+    <% } %>
+    <div class="todo-count"><b><%= remaining %></b> <%= remaining == 1 ? 'item' : 'items' %> left</div>
+</script>
+
+</body>
+</html>
